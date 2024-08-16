@@ -1,4 +1,4 @@
-/* App.css */
+/* App.tsx */
 .chatbot {
   position: fixed;
   bottom: 0;
@@ -12,13 +12,13 @@
 .chatbot-header-hidden {
   display: grid;
   grid-template-columns: 75px 1fr 50px;
-  background-color: #2e93fe;
+  background-color: #007bff;
   border-radius: 25px 25px 0 0;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 10px;
 }
 
-.chatbot-header img {
+.chatbot-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -26,28 +26,27 @@
   place-self: center;
 }
 
-.chatbot-header p {
+.chatbot-header-hidden p {
   place-self: center;
 }
 
-.chatbot-header button {
-  background-color: #2e93fe;
+.chatbot-toggle {
+  background-color: #007bff;
   border: none;
   font-weight: bolder;
 }
 
-.chatbot-header button:hover {
+.chatbot button:hover {
   cursor: pointer;
 }
 
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
 
-
-
-/* .chatbot-header button:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-} */
-
-/* .chatbot-header {
+.chatbot-header {
   background-color: #007bff;
   color: #fff;
   padding: 10px;
@@ -57,7 +56,7 @@
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
-} */
+}
 
 .chatbot-messages {
   height: calc(100% - 50px);
@@ -91,42 +90,3 @@
   border: none;
   cursor: pointer;
 }
-
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

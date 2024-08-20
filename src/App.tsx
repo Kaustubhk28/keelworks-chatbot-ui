@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 interface Message {
@@ -11,6 +11,7 @@ function App() {
 	const [isHidden, setIsHidden] = useState<boolean>(true);
 	const [messages, setMessages] = useState<Message[]>([]);
 	const [currentMessage, setCurrentMessage] = useState<string>('');
+	const messagesEndRef = useRef<HTMLDivElement | null>(null)
 
 	// Fetch the initial message
 	useEffect(() => {
@@ -23,7 +24,14 @@ function App() {
 		});
 	}, []);
 
-	// Send a POST request to API
+	// Scroll to the bottom of the messages when they change
+	useEffect(() => {
+    if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+}, [messages]);
+
+	// Send POST request to API
 	function askChatbot() {
     if (currentMessage.trim()) {
 			setMessages(prevMessages => [
@@ -37,15 +45,13 @@ function App() {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					query: currentMessage
+					user_question: currentMessage
 				})
 			})
 			.then(response => response.json())
 			.then(data => {
 				setMessages(prevMessages => (
-					prevMessages.map(message =>
-							message.isPlaceholder ? { text: data.answer, sender: 'bot' } : message
-					)
+					prevMessages.map(message => message.isPlaceholder ? { text: data.answer, sender: 'bot' } : message)
 				));
 			})
 			.catch(error => {
@@ -53,6 +59,14 @@ function App() {
 				console.error('Error fetching data:', error);
 			});
     }
+	}
+
+	// 'Enter' sends POST request and 'Shift' + 'Enter' creates new line
+	function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+		if (e.key ===		 'Enter' && !e.shiftKey) {
+			e.preventDefault();
+			askChatbot();
+		}
 	}
 
 	return (
@@ -70,7 +84,7 @@ function App() {
 					<button 
 						className='chatbot-toggle'
 						onClick={() => setIsHidden(!isHidden)}
-					>ᐱ</button>
+					>⌃</button>
 				</div>
 			) : (
 				<div className='chatbot-container'>
@@ -81,12 +95,12 @@ function App() {
 							alt='keelbot_ico'
 						/>
 						<div className='chatbot-header-msg'>
-							<h2>KeelBot</h2>
+							<p>KeelBot</p>
 						</div>
 						<button 
 							className='chatbot-toggle'
 							onClick={() => setIsHidden(!isHidden)}
-						>ᐯ</button>
+						>⌄</button>
 					</div>
 					<div className="chatbot-messages">
 						{messages.map((message, index) => (
@@ -94,11 +108,13 @@ function App() {
 								{message.text}
 							</p>
 						))}
+              <div ref={messagesEndRef} />
 					</div>
 					<div className="chatbot-input">
 						<textarea
 							value = {currentMessage}
 							onChange={e => setCurrentMessage(e.target.value)}
+							onKeyDown={handleKeyDown}
 						/>
 						<button onClick={askChatbot}>➤</button>
 					</div>

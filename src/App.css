@@ -1,79 +1,106 @@
 /* Shared */
 .chatbot {
+  /* Change location on screen if needed */
   position: fixed;
   bottom: 0;
   right: 10vw;
-  width: 300px;
+  width: 350px;
   border-radius: 25px 25px 0 0;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
+/* Headers */
 .chatbot-header-hidden,
 .chatbot-header {
   display: grid;
-  grid-template-columns: 75px 1fr 50px;
-  background-color: #007bff;
+  grid-template-columns: 75px 1fr 75px;
   border-radius: 25px 25px 0 0;
+  background: linear-gradient(to right, skyblue, grey);
   padding: 10px;
 }
 
 .chatbot-icon {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
   place-self: center;
+  border-radius: 50%;
 }
 
 .chatbot-header-msg,
 .chatbot-header-msg {
   place-self: center;
+  color: white;
+  font-size: large;
 }
 
 .chatbot-toggle {
-  background-color: #007bff;
+  width: 50px;
+  height: 50px;
+  place-self: center;
+  border-radius: 50%;
   border: none;
-  font-weight: bolder;
+  background-color: transparent;
+  color: white;
+  font-size: x-large;
 }
 
 .chatbot button:hover {
   cursor: pointer;
 }
 
-/* isHidden == false */
+/* Container */
 .chatbot-container {
   display: flex;
   flex-direction: column;
   height: 500px;
 }
 
+/* Messages */
 .chatbot-messages {
-  height: calc(100% - 50px);
-  overflow-y: auto;
-  padding: 10px;
-}
-
-.chatbot-input {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e4e4e4;
+  flex-direction: column;
+  height: calc(100% - 75px);
+  overflow-y: auto;
+  padding: 10px 20px;
 }
 
-.chatbot-input input {
-  width: calc(100% - 100px);
-  padding: 10px;
-  height: 50px
+.chatbot-messages * {
+  width: fit-content;
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: lightgray;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: skyblue;
+}
+
+/* Input */
+.chatbot-input {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  border-top: 2px solid grey;
+  padding: 10px 0 10px 10px;
+}
+
+.chatbot-input textarea {
+  width: 275px;
+  height: 75px;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
 }
 
 .chatbot-input button {
-  width: 80px;
-  height: 40px;
-  margin: 10px;
-  background-color: #e4e4e4;
-  color: #000000;
   border: none;
-  cursor: pointer;
-  font-size: xx-large;
+  background-color: #ffffff;
+  font-size: x-large;
 }

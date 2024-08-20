@@ -26,10 +26,10 @@ function App() {
 
 	// Scroll to the bottom of the messages when they change
 	useEffect(() => {
-    if (messagesEndRef.current) {
-        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-}, [messages]);
+		if (messagesEndRef.current) {
+			messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [messages]);
 
 	// Send POST request to API
 	function askChatbot() {

@@ -1,6 +1,6 @@
 # KeelWorks Chatbot UI
 
-This repository contains the frontend code for a simple chatbot user interface built with React. The UI interacts with a backend API to fetch responses from a bot based on user input.
+This repository contains the frontend code for the KeelWorks chatbot user interface built with React. The UI interacts with a backend API to fetch responses from a chatbot model based on user input.
 
 ## Getting Started
 
@@ -13,29 +13,29 @@ This repository contains the frontend code for a simple chatbot user interface b
 
 1. Clone the repository
 
-```
-    git clone https://github.com/jjpark987/Entity-Extraction-Chatbot-UI
+```zsh
+git clone git@github.com:jjpark987/Entity-Extraction-Chatbot-UI.git
 ```
 
 2. Install dependencies
 
-```
-    npm install
+```zsh
+npm install
 ```
 
 3. Run development server
 
-```
-    npm start
+```zsh
+npm start
 ```
 
-The app should now be running on http://localhost:3000
+The app should now be running at http://localhost:3000.
 
 ## API Endpoints
 
-- GET '/': Fetches the initial message from API
-- POST '/ask': Sends the user's question and receives the response from chatbot model
+- GET '/': Fetches the initial message from API.
+- POST '/ask': Sends the user's question and receives the response from chatbot model.
 
 ## Contact
 
-For any questions or issues, please reach out to jason.park@keelworks.org
+For any questions or issues, please reach out to jason.park@keelworks.org.

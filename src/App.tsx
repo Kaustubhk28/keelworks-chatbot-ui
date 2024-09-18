@@ -75,7 +75,7 @@ function App() {
 				<div className='chatbot-header-hidden'>
 					<img 
 						className='chatbot-icon'
-						src='favicon.ico'
+						src='captain_keel.png'
 						alt='keelbot_ico'
 					/>
 					<div className='chatbot-header-msg'>
@@ -91,11 +91,11 @@ function App() {
 					<div className='chatbot-header'>
 						<img 
 							className='chatbot-icon'
-							src='favicon.ico'
+							src='captain_keel.png'
 							alt='keelbot_ico'
 						/>
 						<div className='chatbot-header-msg'>
-							<p>KeelBot</p>
+							<p>Captain Keel</p>
 						</div>
 						<button 
 							className='chatbot-toggle'

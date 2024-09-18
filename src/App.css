@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: 75px 1fr 75px;
   border-radius: 25px 25px 0 0;
-  background: linear-gradient(to right, skyblue, grey);
+  background: linear-gradient(to right, grey, skyblue);
   padding: 10px;
 }
 
